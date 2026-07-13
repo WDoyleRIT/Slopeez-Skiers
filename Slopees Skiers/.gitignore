@@ -1,0 +1,39 @@
+# This .gitignore file should be placed at the root of your Unity project directory
+#
+# Folders to ignore (Generated local caches and builds)
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ex]ternal[Bb]uild/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+.utmp/
+
+# Memory dumps and diagnostics
+*.log
+*.crash
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Asset generation files
+*.blend1
+*.blend2
+
+# IDE and Editor specific files
+.vs/
+.idea/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svclog
+
+# Crashlytics plugin
+CrashlyticsInit.bin
