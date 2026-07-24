@@ -7,12 +7,13 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
 
-    private int score = 0;
+    public int score = 0;
     private float gameTimer = 0;
     private float cycleTimer = 0;
     private float interval;
     private float speedCycle;
     [SerializeField] private GameObject logPrefab;
+    [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Button pauseButton;
     [SerializeField] private TextMeshProUGUI pauseText;
     [SerializeField] private GameObject shaderPanel;
@@ -69,15 +70,17 @@ public class Game : MonoBehaviour
     private void SpawnLog()
     {
         float randomX = Random.Range(-7f, 7f);
-        Vector3 spawnPosition = new Vector3(randomX, -15.5f, 22.5f);
         switch (Random.Range(1, 3))
         {
-            case 1: Instantiate(logPrefab, spawnPosition, Quaternion.Euler(0f, 0f, 90f));
+            case 1:
+                Vector3 spawnPositionLog = new Vector3(randomX, -15.5f, 22.5f);
+                Instantiate(logPrefab, spawnPositionLog, Quaternion.Euler(0f, 0f, 90f));
                 break;
             case 2:
+                Vector3 spawnPositionCoin = new Vector3(randomX, -14.5f, 22.5f);
+                Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
                 break;
         }
-        Debug.Log(Random.Range(1, 3));
     }
 
     private void PauseGame(bool pausePressed)
