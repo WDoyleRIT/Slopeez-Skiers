@@ -23,13 +23,17 @@ public class Log : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //transform.position = Vector3.MoveTowards(transform.position, targetPosition, gameManagerRef.objSpeed * Time.deltaTime);
-        Vector3 nextPosition = Vector3.MoveTowards(rb.position, targetPosition, gameManagerRef.objSpeed * Time.fixedDeltaTime);
-        rb.MovePosition(nextPosition);
-        if (transform.position == targetPosition)
+        if (!gameManagerRef.isPaused)
         {
-            Destroy(gameObject);
+            //transform.position = Vector3.MoveTowards(transform.position, targetPosition, gameManagerRef.objSpeed * Time.deltaTime);
+            Vector3 nextPosition = Vector3.MoveTowards(rb.position, targetPosition, gameManagerRef.objSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(nextPosition);
+            if (transform.position == targetPosition)
+            {
+                Destroy(gameObject);
+            }
         }
+    
     }
 
     void OnCollisionEnter(Collision collision)
@@ -38,7 +42,7 @@ public class Log : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(collision.gameObject);
-            Debug.Log("Player smashed by the log!");
+            gameManagerRef.GameOver();
         }
     }
 }

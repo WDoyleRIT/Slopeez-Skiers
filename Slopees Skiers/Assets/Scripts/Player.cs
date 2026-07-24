@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private float startingElevation;
     private bool movingLeft;
     private bool movingRight;
+    private Game gameManagerRef;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +27,17 @@ public class Player : MonoBehaviour
         startingElevation = playerCharacter.transform.position.y;
         movingLeft = false;
         movingRight = false;
+        gameManagerRef = FindObjectOfType<Game>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameManagerRef.isPaused)
+        {
+            return;
+        }
+
         //State machine for player movement! (right should be minus , left should be plus)
         switch (currentState)
         {
@@ -42,7 +49,7 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.Jumping:
                 playerCharacter.transform.position = new Vector3(playerCharacter.transform.position.x,
-                    playerCharacter.transform.position.y + 0.05f, playerCharacter.transform.position.z);
+                    playerCharacter.transform.position.y + 0.30f, playerCharacter.transform.position.z);
 
                 if (playerCharacter.transform.position.y >= startingElevation + jumpHeight)
                 {
@@ -51,7 +58,7 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.Falling:
                 playerCharacter.transform.position = new Vector3(playerCharacter.transform.position.x,
-                    playerCharacter.transform.position.y - 0.05f, playerCharacter.transform.position.z);
+                    playerCharacter.transform.position.y - 0.25f, playerCharacter.transform.position.z);
 
                 if (playerCharacter.transform.position.y <= startingElevation)
                 {
@@ -71,7 +78,7 @@ public class Player : MonoBehaviour
 
         if (movingLeft && playerCharacter.transform.position.x <= slopeLimit)
         {
-            playerCharacter.transform.Translate(Vector3.right * Time.deltaTime * 20f);
+            playerCharacter.transform.Translate(Vector3.right * Time.deltaTime * 30f);
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
@@ -85,7 +92,7 @@ public class Player : MonoBehaviour
 
         if (movingRight && playerCharacter.transform.position.x >= -slopeLimit)
         {
-            playerCharacter.transform.Translate(Vector3.left * Time.deltaTime * 20f);
+            playerCharacter.transform.Translate(Vector3.left * Time.deltaTime * 30f);
         }
 
 
