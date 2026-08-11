@@ -34,8 +34,10 @@ public class Game : MonoBehaviour
         // 2. Set the target frame rate to 60
         Application.targetFrameRate = 60;
 
+        // Interval between spawning objects
         interval = 1f;
         objSpeed = 20f;
+        // Interval between speed increases
         speedCycle = 3f;
 
         gameText.gameObject.SetActive(false);
@@ -55,7 +57,8 @@ public class Game : MonoBehaviour
             if (gameTimer >= interval) 
             {
                 gameTimer = 0;
-                SpawnLog();
+                score += 10;
+                SpawnObject();
             }
             if (cycleTimer >= speedCycle)
             {
@@ -71,7 +74,7 @@ public class Game : MonoBehaviour
         //Debug.Log(timer);
     }
 
-    private void SpawnLog()
+    private void SpawnObject()
     {
         float randomX = Random.Range(-7f, 7f);
         switch (Random.Range(1, 3))

@@ -24,7 +24,7 @@ public class Coin : MonoBehaviour
     {
         if (!gameManagerRef.isPaused)
         {
-            Debug.Log("Object speed:" + gameManagerRef.objSpeed);
+            //Debug.Log("Object speed:" + gameManagerRef.objSpeed);
             Quaternion deltaRotation = Quaternion.Euler(Vector3.left * rotationSpeed * Time.fixedDeltaTime);
             rb.MoveRotation(rb.rotation * deltaRotation);
             Vector3 nextPosition = Vector3.MoveTowards(rb.position, targetPosition, gameManagerRef.objSpeed * Time.fixedDeltaTime);
@@ -41,8 +41,8 @@ public class Coin : MonoBehaviour
         // Check if the object we bumped into has the "Player" tag
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Kaching!");
-            gameManagerRef.score += 100;
+            //Debug.Log("Kaching!");
+            gameManagerRef.score += 20;
             Destroy(this.gameObject);
         }
     }
