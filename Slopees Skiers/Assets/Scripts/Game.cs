@@ -18,6 +18,8 @@ public class Game : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pauseText;
     [SerializeField] private GameObject shaderPanel;
     [SerializeField] private TextMeshProUGUI gameText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
     [HideInInspector] public bool isPaused = false;
     private float timer;
     public float objSpeed;
@@ -37,6 +39,7 @@ public class Game : MonoBehaviour
         speedCycle = 3f;
 
         gameText.gameObject.SetActive(false);
+        finalScoreText.gameObject.SetActive(false);
         shaderPanel.SetActive(false);
         pauseButton.onClick.AddListener(() => PauseGame(!isPaused));
     }
@@ -64,6 +67,7 @@ public class Game : MonoBehaviour
                 }
             }
         }
+        scoreText.text = "Score: \n" + score;
         //Debug.Log(timer);
     }
 
@@ -108,6 +112,9 @@ public class Game : MonoBehaviour
         gameText.text = "Game Over!";
         gameText.gameObject.SetActive(true);
         pauseButton.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(false);
         shaderPanel.SetActive(true);
+        finalScoreText.gameObject.SetActive(true);
+        finalScoreText.text = "Score: " + score;
     }
 }
