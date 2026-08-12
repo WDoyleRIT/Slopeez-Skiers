@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Log
   - Object
+  - Main Menu
+  - Char Select
   layers:
   - Default
   - TransparentFX

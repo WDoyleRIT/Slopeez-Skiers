@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 
 enum PlayerState
@@ -20,6 +21,14 @@ public class Player : MonoBehaviour
     private bool movingLeft;
     private bool movingRight;
     private Game gameManagerRef;
+
+    [SerializeField] private Material material1;
+    [SerializeField] private Material material2;
+    [SerializeField] private Material material3;
+    [SerializeField] private Material material4;
+    [SerializeField] private Material material5;
+    [SerializeField] private Material material6;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +37,33 @@ public class Player : MonoBehaviour
         movingLeft = false;
         movingRight = false;
         gameManagerRef = FindObjectOfType<Game>();
+
+        Renderer objectRenderer = GetComponent<Renderer>();
+        switch (GlobalVar.Instance.selectedCharacter)
+        {
+            case Character.Red:
+                objectRenderer.material = material1;
+                break;
+            case Character.Orange:
+                objectRenderer.material = material2;
+                break;
+            case Character.Yellow:
+                objectRenderer.material = material3;
+                break;
+            case Character.Green:
+                objectRenderer.material = material4;
+                break;
+            case Character.Blue:
+                objectRenderer.material = material5;
+                break;
+            case Character.Purple:
+                objectRenderer.material = material6;
+                break;
+            default:
+                Debug.LogWarning("Invalid character selection. Defaulting to character 1.");
+                objectRenderer.material = material1;
+                break;
+        }
     }
 
     // Update is called once per frame
