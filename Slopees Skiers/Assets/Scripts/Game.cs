@@ -2,16 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
+enum GameState
+{
+    Playing,
+    Paused,
+    GameOver,
+
+    MainMenu,
+    Settings,
+    CharSelect
+}
+
 
 public class Game : MonoBehaviour
 {
 
+    // Not sure if I'll even need this but it might be helpful later on for managing game states
+    private GameState currentGameState;
     public int score = 0;
     private float gameTimer = 0;
     private float cycleTimer = 0;
     private float interval;
     private float speedCycle;
+    [SerializeField] private GameObject playerObj;
     [SerializeField] private GameObject logPrefab;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Button pauseButton;
@@ -72,6 +88,10 @@ public class Game : MonoBehaviour
         }
         scoreText.text = "Score: \n" + score;
         //Debug.Log(timer);
+
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            NewGame();
+        }
     }
 
     private void SpawnObject()
@@ -87,6 +107,38 @@ public class Game : MonoBehaviour
                 Vector3 spawnPositionCoin = new Vector3(randomX, -14.5f, 22.5f);
                 Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
                 break;
+        }
+    }
+
+    private void NewGame()
+    {
+
+        Debug.Log("New Game Started");
+        score = 0;
+        gameTimer = 0;
+        cycleTimer = 0;
+        objSpeed = 20f;
+        interval = 1f;
+        isPaused = false;
+
+        gameText.gameObject.SetActive(false);
+        finalScoreText.gameObject.SetActive(false);
+        shaderPanel.SetActive(false);
+        pauseButton.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(true);
+        playerObj.SetActive(true);
+
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        List<GameObject> rootObjects = new List<GameObject>();
+        activeScene.GetRootGameObjects(rootObjects);
+
+        foreach (GameObject rootGo in rootObjects)
+        {
+            if (rootGo.gameObject.CompareTag("Object"))
+            {
+                Destroy(rootGo);
+            }
         }
     }
 

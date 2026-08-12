@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43749017, g: 0.4853112, b: 0.56558603, a: 1}
+  m_IndirectSpecularColor: {r: 0.43748978, g: 0.4853109, b: 0.56558526, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  playerObj: {fileID: 1939169213}
   logPrefab: {fileID: 7194786080165343962, guid: c6e9a203f1e6f53408ba8d4826b00043, type: 3}
   coinPrefab: {fileID: 9173477622451884717, guid: 4f1fcef85ec4cdb499421b42712fc991, type: 3}
   pauseButton: {fileID: 273164123}

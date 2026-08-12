@@ -41,7 +41,7 @@ public class Log : MonoBehaviour
         // Check if the object we bumped into has the "Player" tag
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
             gameManagerRef.GameOver();
         }
     }
