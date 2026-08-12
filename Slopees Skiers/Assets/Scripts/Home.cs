@@ -27,6 +27,7 @@ public class Home : MonoBehaviour
     [SerializeField] private Button blueButton;
     [SerializeField] private Button purpleButton;
     [SerializeField] private Button startButton;
+    [SerializeField] private Button homeButton;
 
     //[SerializeField] private Button settingsButton;
 
@@ -68,6 +69,11 @@ public class Home : MonoBehaviour
             startButton.onClick.AddListener(StartGame);
         }
 
+        if(homeButton != null)
+        {
+            homeButton.onClick.AddListener(() => ChangeHomeState(HomeState.MainMenu));
+        }
+
     }
 
     private void PlayButton()
@@ -105,6 +111,8 @@ public class Home : MonoBehaviour
                 greenButton.gameObject.SetActive(false);
                 blueButton.gameObject.SetActive(false);
                 purpleButton.gameObject.SetActive(false);
+                startButton.gameObject.SetActive(false);
+                homeButton.gameObject.SetActive(false);
                 break;
             case HomeState.CharSelect:
                 titleText.gameObject.SetActive(false);
@@ -116,6 +124,8 @@ public class Home : MonoBehaviour
                 greenButton.gameObject.SetActive(true);
                 blueButton.gameObject.SetActive(true);
                 purpleButton.gameObject.SetActive(true);
+                startButton.gameObject.SetActive(true);
+                homeButton.gameObject.SetActive(true);
                 break;
             case HomeState.Settings:
                 titleText.gameObject.SetActive(false);
@@ -127,6 +137,8 @@ public class Home : MonoBehaviour
                 greenButton.gameObject.SetActive(false);
                 blueButton.gameObject.SetActive(false);
                 purpleButton.gameObject.SetActive(false);
+                startButton.gameObject.SetActive(false);
+                homeButton.gameObject.SetActive(false);
                 break;
         }
     }

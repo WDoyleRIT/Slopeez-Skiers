@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Required for changing scenes
 
 enum GameState
 {
@@ -31,6 +32,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject logPrefab;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Button pauseButton;
+    [SerializeField] private Button homeButton;
     [SerializeField] private TextMeshProUGUI pauseText;
     [SerializeField] private GameObject shaderPanel;
     [SerializeField] private TextMeshProUGUI gameText;
@@ -58,7 +60,9 @@ public class Game : MonoBehaviour
 
         gameText.gameObject.SetActive(false);
         finalScoreText.gameObject.SetActive(false);
+        homeButton.gameObject.SetActive(false);
         shaderPanel.SetActive(false);
+        homeButton.onClick.AddListener(() => SceneManager.LoadScene("HomeScene"));
         pauseButton.onClick.AddListener(() => PauseGame(!isPaused));
     }
 
@@ -126,6 +130,7 @@ public class Game : MonoBehaviour
         shaderPanel.SetActive(false);
         pauseButton.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
+        homeButton.gameObject.SetActive(false);
         playerObj.SetActive(true);
 
         Scene activeScene = SceneManager.GetActiveScene();
@@ -149,6 +154,7 @@ public class Game : MonoBehaviour
         {
             gameText.text = "Game Paused";
             gameText.gameObject.SetActive(true);
+            homeButton.gameObject.SetActive(true);
             pauseText.text = "Unpause";
             shaderPanel.SetActive(true);
         }
@@ -156,6 +162,7 @@ public class Game : MonoBehaviour
         {
             pauseText.text = "Pause";
             gameText.gameObject.SetActive(false);
+            homeButton.gameObject.SetActive(false);
             shaderPanel.SetActive(false);
         }
     }
@@ -168,6 +175,7 @@ public class Game : MonoBehaviour
         gameText.gameObject.SetActive(true);
         pauseButton.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
+        homeButton.gameObject.SetActive(true);
         shaderPanel.SetActive(true);
         finalScoreText.gameObject.SetActive(true);
         finalScoreText.text = "Score: " + score;
