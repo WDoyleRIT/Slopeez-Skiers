@@ -172,6 +172,7 @@ MonoBehaviour:
   logPrefab: {fileID: 7194786080165343962, guid: c6e9a203f1e6f53408ba8d4826b00043, type: 3}
   coinPrefab: {fileID: 9173477622451884717, guid: 4f1fcef85ec4cdb499421b42712fc991, type: 3}
   pointPrefab: {fileID: 2519064117574322359, guid: 2a3f0939c0ebd4c40a9bed3c5209408a, type: 3}
+  tubePrefab: {fileID: 9072345021334047819, guid: 81f2bca0fd55f4549beb7ba8e862139f, type: 3}
   pauseButton: {fileID: 273164123}
   homeButton: {fileID: 1985706778}
   pauseText: {fileID: 877777088}

@@ -9,12 +9,13 @@ public class Point : MonoBehaviour
 
     private int score;
     private TextMeshProUGUI pointText;
+    private Game gameManagerRef;
     Color textColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManagerRef = FindObjectOfType<Game>();
     }
 
     public void Initialize(int score)
@@ -28,7 +29,12 @@ public class Point : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position += new Vector3(0, 10.0f * Time.deltaTime, 0);
+        if (gameManagerRef.isPaused)
+        {
+            Destroy(gameObject);
+        }
+
+        this.transform.position += new Vector3(0, 20.0f * Time.deltaTime, 0);
         textColor.a -= 1.0f * Time.deltaTime;
         pointText.color = textColor;
         if (textColor.a <= 0.0f)

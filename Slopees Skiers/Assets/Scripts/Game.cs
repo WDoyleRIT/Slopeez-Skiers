@@ -32,6 +32,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject logPrefab;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private GameObject pointPrefab;
+    [SerializeField] private GameObject tubePrefab;
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button homeButton;
     [SerializeField] private TextMeshProUGUI pauseText;
@@ -58,7 +59,7 @@ public class Game : MonoBehaviour
         interval = 1f;
         objSpeed = 20f;
         // Interval between speed increases
-        speedCycle = 3f;
+        speedCycle = 8f;
 
         gameText.gameObject.SetActive(false);
         finalScoreText.gameObject.SetActive(false);
@@ -80,7 +81,7 @@ public class Game : MonoBehaviour
             {
                 gameTimer = 0;
                 score += 10;
-                SpawnObject();
+                StartCoroutine(SpawnObject());
             }
             if (cycleTimer >= speedCycle)
             {
@@ -100,20 +101,68 @@ public class Game : MonoBehaviour
         }
     }
 
-    private void SpawnObject()
+    private IEnumerator SpawnObject()
     {
-        float randomX = Random.Range(-7f, 7f);
-        switch (Random.Range(1, 3))
+
+        float randomX;
+        switch (Random.Range(1, 4))
         {
             case 1:
-                Vector3 spawnPositionLog = new Vector3(randomX, -15.5f, 22.5f);
-                Instantiate(logPrefab, spawnPositionLog, Quaternion.Euler(0f, 0f, 90f));
+                randomX = -7f;
                 break;
             case 2:
-                Vector3 spawnPositionCoin = new Vector3(randomX, -14.5f, 22.5f);
-                Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
+                randomX = 0f;
+                break;
+            case 3:
+                randomX = -7f;
+                break;
+            default:
+                randomX = 0f;
                 break;
         }
+        Vector3 spawnPositionLog = new Vector3(randomX, -15.5f, 22.5f);
+        Vector3 spawnPositionCoin = new Vector3(randomX, -14.5f, 22.5f);
+        switch (Random.Range(1, 6))
+        {
+            // Case 1 and 2: spawn log
+            case 1:
+            case 2:
+                Instantiate(logPrefab, spawnPositionLog, Quaternion.Euler(0f, 0f, 90f));
+                break;
+            // Case 3: spawn 3 coins
+            case 3:
+                Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
+                yield return new WaitForSeconds(interval / 8);
+
+                Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
+                yield return new WaitForSeconds(interval / 8);
+
+                Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
+                break;
+            // Case 4: spawn 5 coins
+            case 4:
+                Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
+                yield return new WaitForSeconds(interval / 8);
+
+                Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
+                yield return new WaitForSeconds(interval / 8);
+
+                Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
+                yield return new WaitForSeconds(interval / 8);
+
+                Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
+                yield return new WaitForSeconds(interval / 8);
+
+                Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
+                break;
+            case 5:
+                Debug.Log("half pipe will spawn here");
+                break;
+            default:
+                break;
+        }
+
+        yield break;
     }
 
     public void CreatePointVisual(int score)
