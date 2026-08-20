@@ -43,6 +43,7 @@ public class Coin : MonoBehaviour
         {
             //Debug.Log("Kaching!");
             gameManagerRef.score += 20;
+            gameManagerRef.CreatePointVisual(20);
             Destroy(this.gameObject);
         }
     }

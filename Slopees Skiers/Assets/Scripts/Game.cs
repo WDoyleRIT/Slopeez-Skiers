@@ -31,6 +31,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject playerObj;
     [SerializeField] private GameObject logPrefab;
     [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private GameObject pointPrefab;
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button homeButton;
     [SerializeField] private TextMeshProUGUI pauseText;
@@ -38,6 +39,7 @@ public class Game : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI finalScoreText;
+    [SerializeField] private Transform gameCanvas;
     [HideInInspector] public bool isPaused = false;
     private float timer;
     public float objSpeed;
@@ -112,6 +114,12 @@ public class Game : MonoBehaviour
                 Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
                 break;
         }
+    }
+
+    public void CreatePointVisual(int score)
+    {
+        GameObject pointVisual = Instantiate(pointPrefab, gameCanvas);
+        pointVisual.GetComponent<Point>().Initialize(score);
     }
 
     private void NewGame()

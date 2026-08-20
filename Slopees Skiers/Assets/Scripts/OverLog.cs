@@ -26,6 +26,7 @@ public class OverLog : MonoBehaviour
         {
             //meshRenderer.enabled = false;
             gameManagerRef.score += 50;
+            gameManagerRef.CreatePointVisual(50);
             //Debug.Log("Jumped over log!");
         }
     }
