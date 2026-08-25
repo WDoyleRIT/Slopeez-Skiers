@@ -120,8 +120,10 @@ public class Game : MonoBehaviour
                 randomX = 0f;
                 break;
         }
+
         Vector3 spawnPositionLog = new Vector3(randomX, -15.5f, 22.5f);
         Vector3 spawnPositionCoin = new Vector3(randomX, -14.5f, 22.5f);
+
         switch (Random.Range(1, 6))
         {
             // Case 1 and 2: spawn log
