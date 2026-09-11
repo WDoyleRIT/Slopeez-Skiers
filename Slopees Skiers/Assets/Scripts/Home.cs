@@ -20,6 +20,7 @@ public class Home : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titleText;
 
     [SerializeField] private TextMeshProUGUI charText;
+    [SerializeField] private TextMeshProUGUI currentChar;
     [SerializeField] private Button powderButton;
     [SerializeField] private Button skyButton;
     [SerializeField] private Button sunnyButton;
@@ -85,6 +86,7 @@ public class Home : MonoBehaviour
     private void SetCharacter(int character)
     {
         GlobalVar.Instance.selectedCharacter = (Character)character;
+        currentChar.text = GlobalVar.Instance.selectedCharacter.ToString();
         Debug.Log("Character set to " + GlobalVar.Instance.selectedCharacter);
     }
 
