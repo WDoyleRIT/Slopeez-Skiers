@@ -20,12 +20,12 @@ public class Home : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titleText;
 
     [SerializeField] private TextMeshProUGUI charText;
-    [SerializeField] private Button redButton;
-    [SerializeField] private Button orangeButton;
-    [SerializeField] private Button yellowButton;
-    [SerializeField] private Button greenButton;
-    [SerializeField] private Button blueButton;
-    [SerializeField] private Button purpleButton;
+    [SerializeField] private Button powderButton;
+    [SerializeField] private Button skyButton;
+    [SerializeField] private Button sunnyButton;
+    [SerializeField] private Button freezeButton;
+    [SerializeField] private Button bootsButton;
+    [SerializeField] private Button heartButton;
     [SerializeField] private Button startButton;
     [SerializeField] private Button homeButton;
 
@@ -41,27 +41,27 @@ public class Home : MonoBehaviour
             playButton.onClick.AddListener(PlayButton);
         }
 
-        if (redButton != null) { 
-        redButton.onClick.AddListener(() => SetCharacter(0));
+        if (powderButton != null) { 
+        powderButton.onClick.AddListener(() => SetCharacter(0));
         }
-        if (orangeButton != null) { 
-        orangeButton.onClick.AddListener(() => SetCharacter(1));
+        if (skyButton != null) { 
+        skyButton.onClick.AddListener(() => SetCharacter(1));
         }
-        if (yellowButton != null)
+        if (sunnyButton != null)
         {
-        yellowButton.onClick.AddListener(() => SetCharacter(2));
+        sunnyButton.onClick.AddListener(() => SetCharacter(2));
         }
-        if (greenButton != null)
+        if (freezeButton != null)
         {
-        greenButton.onClick.AddListener(() => SetCharacter(3));
+        freezeButton.onClick.AddListener(() => SetCharacter(3));
         }
-        if (blueButton != null)
+        if (bootsButton != null)
         {
-        blueButton.onClick.AddListener(() => SetCharacter(4));
+        bootsButton.onClick.AddListener(() => SetCharacter(4));
         }
-        if (purpleButton != null)
+        if (heartButton != null)
         {
-        purpleButton.onClick.AddListener(() => SetCharacter(5));
+        heartButton.onClick.AddListener(() => SetCharacter(5));
         }
 
         if(startButton != null)
@@ -105,12 +105,12 @@ public class Home : MonoBehaviour
                 titleText.gameObject.SetActive(true);
                 playButton.gameObject.SetActive(true);
                 charText.gameObject.SetActive(false);
-                redButton.gameObject.SetActive(false);
-                orangeButton.gameObject.SetActive(false);
-                yellowButton.gameObject.SetActive(false);
-                greenButton.gameObject.SetActive(false);
-                blueButton.gameObject.SetActive(false);
-                purpleButton.gameObject.SetActive(false);
+                powderButton.gameObject.SetActive(false);
+                skyButton.gameObject.SetActive(false);
+                sunnyButton.gameObject.SetActive(false);
+                freezeButton.gameObject.SetActive(false);
+                bootsButton.gameObject.SetActive(false);
+                heartButton.gameObject.SetActive(false);
                 startButton.gameObject.SetActive(false);
                 homeButton.gameObject.SetActive(false);
                 break;
@@ -118,12 +118,12 @@ public class Home : MonoBehaviour
                 titleText.gameObject.SetActive(false);
                 playButton.gameObject.SetActive(false);
                 charText.gameObject.SetActive(true);
-                redButton.gameObject.SetActive(true);
-                orangeButton.gameObject.SetActive(true);
-                yellowButton.gameObject.SetActive(true);
-                greenButton.gameObject.SetActive(true);
-                blueButton.gameObject.SetActive(true);
-                purpleButton.gameObject.SetActive(true);
+                powderButton.gameObject.SetActive(true);
+                skyButton.gameObject.SetActive(true);
+                sunnyButton.gameObject.SetActive(true);
+                freezeButton.gameObject.SetActive(true);
+                bootsButton.gameObject.SetActive(true);
+                heartButton.gameObject.SetActive(true);
                 startButton.gameObject.SetActive(true);
                 homeButton.gameObject.SetActive(true);
                 break;
@@ -131,12 +131,12 @@ public class Home : MonoBehaviour
                 titleText.gameObject.SetActive(false);
                 playButton.gameObject.SetActive(false);
                 charText.gameObject.SetActive(false);
-                redButton.gameObject.SetActive(false);
-                orangeButton.gameObject.SetActive(false);
-                yellowButton.gameObject.SetActive(false);
-                greenButton.gameObject.SetActive(false);
-                blueButton.gameObject.SetActive(false);
-                purpleButton.gameObject.SetActive(false);
+                powderButton.gameObject.SetActive(false);
+                skyButton.gameObject.SetActive(false);
+                sunnyButton.gameObject.SetActive(false);
+                freezeButton.gameObject.SetActive(false);
+                bootsButton.gameObject.SetActive(false);
+                heartButton.gameObject.SetActive(false);
                 startButton.gameObject.SetActive(false);
                 homeButton.gameObject.SetActive(false);
                 break;

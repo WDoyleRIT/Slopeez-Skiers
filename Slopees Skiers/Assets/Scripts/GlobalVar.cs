@@ -4,12 +4,12 @@ using UnityEngine;
 
 public enum Character
 {
-    Red,
-    Orange,
-    Yellow,
-    Green,
-    Blue,
-    Purple
+    Powder,
+    Sky,
+    Sunny,
+    Freeze,
+    Boots,
+    Heart
 
 }
 

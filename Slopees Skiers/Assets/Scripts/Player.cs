@@ -41,22 +41,22 @@ public class Player : MonoBehaviour
         Renderer objectRenderer = GetComponent<Renderer>();
         switch (GlobalVar.Instance.selectedCharacter)
         {
-            case Character.Red:
+            case Character.Powder:
                 objectRenderer.material = material1;
                 break;
-            case Character.Orange:
+            case Character.Sky:
                 objectRenderer.material = material2;
                 break;
-            case Character.Yellow:
+            case Character.Sunny:
                 objectRenderer.material = material3;
                 break;
-            case Character.Green:
+            case Character.Freeze:
                 objectRenderer.material = material4;
                 break;
-            case Character.Blue:
+            case Character.Boots:
                 objectRenderer.material = material5;
                 break;
-            case Character.Purple:
+            case Character.Heart:
                 objectRenderer.material = material6;
                 break;
             default:
