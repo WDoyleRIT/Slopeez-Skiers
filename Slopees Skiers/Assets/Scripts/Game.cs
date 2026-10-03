@@ -4,7 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // Required for changing scenes
+using UnityEngine.SceneManagement;
+using System.Collections.Specialized; // Required for changing scenes
 
 enum GameState
 {
@@ -123,8 +124,11 @@ public class Game : MonoBehaviour
 
         Vector3 spawnPositionLog = new Vector3(randomX, -15.5f, 22.5f);
         Vector3 spawnPositionCoin = new Vector3(randomX, -14.5f, 22.5f);
+        Vector3 spawnPositionTube = new Vector3(randomX, -15.5f, 22.5f);
 
-        switch (Random.Range(1, 6))
+
+        //switch (Random.Range(1, 6))
+        switch (Random.Range(5, 6))
         {
             // Case 1 and 2: spawn log
             case 1:
@@ -157,8 +161,9 @@ public class Game : MonoBehaviour
 
                 Instantiate(coinPrefab, spawnPositionCoin, Quaternion.Euler(0f, 0f, 90f));
                 break;
+            // Case 5: Spawn Half Pipe (not implemented yet)
             case 5:
-                Debug.Log("half pipe will spawn here");
+                Instantiate(tubePrefab, spawnPositionTube, Quaternion.Euler(0f, 0f, 90f));
                 break;
             default:
                 break;
