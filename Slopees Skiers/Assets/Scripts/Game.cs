@@ -163,7 +163,7 @@ public class Game : MonoBehaviour
                 break;
             // Case 5: Spawn Half Pipe (not implemented yet)
             case 5:
-                Instantiate(tubePrefab, spawnPositionTube, Quaternion.Euler(0f, 0f, 90f));
+                Instantiate(tubePrefab, spawnPositionTube, Quaternion.Euler(0f, 90f, 125f));
                 break;
             default:
                 break;
