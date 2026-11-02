@@ -13,11 +13,20 @@ public enum Character
 
 }
 
+public enum Difficulty
+{
+    Beginner,
+    Intermediate,
+    Expert
+}
+
 public class GlobalVar : MonoBehaviour
 {
     public static GlobalVar Instance { get; private set; }
 
     public Character selectedCharacter;
+    public Difficulty selectedDifficulty;
+    public float volumeLevel = 1.0f; // Default volume level (max)
     private void Awake()
     {
         // Enforce the Singleton pattern to prevent duplicate managers
