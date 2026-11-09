@@ -10,7 +10,7 @@ public class OverTube : MonoBehaviour
     [SerializeField] Material badMaterial;
     void Start()
     {
-        meshRenderer.enabled = true;
+        meshRenderer.enabled = false;
     }
 
     // Update is called once per frame
@@ -40,6 +40,10 @@ public class OverTube : MonoBehaviour
         // Check if the object we bumped into has the "Player" tag
         if (collision.gameObject.CompareTag("Player"))
         {
+            
+            // To Do: Make player snap to center of tube upon landing on one
+            collision.gameObject.transform.position = new Vector3(transform.position.x, collision.gameObject.transform.position.y, collision.gameObject.transform.position.z);
+
             GlobalVar.Instance.isGrinding = false;
             Player playerScript = collision.gameObject.GetComponent<Player>();
             if(playerScript.currentState != PlayerState.Jumping)

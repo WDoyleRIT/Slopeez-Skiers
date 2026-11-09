@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     private float defaultElevation;
     private float startingElevation;
     private float tubeElevation;
+    private int storedScore = 0;
     private bool movingLeft;
     private bool movingRight;
     private Game gameManagerRef;
@@ -84,8 +85,15 @@ public class Player : MonoBehaviour
         // Adjust the player's elevation based on whether they are grinding or not
         if (GlobalVar.Instance.isGrinding && currentState != PlayerState.Jumping)
         {
+            // To do: Add timer to ensure score increases at a consistent rate while grinding, rather than every frame
+            storedScore += 1;
+            gameManagerRef.score += 1;
 
             startingElevation = tubeElevation;
+            if(currentState != PlayerState.Idle)
+            {
+                currentState = PlayerState.Idle; // Reset the state to Idle when grinding
+            }
             currentState = PlayerState.Idle; // Reset the state to Idle when grinding
             if (playerCharacter.transform.position.y != tubeElevation)
             {
@@ -105,6 +113,12 @@ public class Player : MonoBehaviour
             case PlayerState.Idle:
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
+                    if(GlobalVar.Instance.isGrinding)
+                    {
+                        gameManagerRef.score += 30;
+                        gameManagerRef.CreatePointVisual(storedScore + 30);
+                        storedScore = 0;
+                    }
                     currentState = PlayerState.Jumping;
                 }
                 break;

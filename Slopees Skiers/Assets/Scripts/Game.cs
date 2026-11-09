@@ -174,6 +174,7 @@ public class Game : MonoBehaviour
         yield break;
     }
 
+    // To Do: Reconfigure so that score is changed in method
     public void CreatePointVisual(int score)
     {
         GameObject pointVisual = Instantiate(pointPrefab, gameCanvas);
