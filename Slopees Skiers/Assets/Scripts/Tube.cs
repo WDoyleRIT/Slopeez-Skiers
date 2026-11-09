@@ -32,4 +32,14 @@ public class Tube : MonoBehaviour
             }
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        // Check if the object we bumped into has the "Player" tag
+        if (collision.gameObject.CompareTag("Player") && !GlobalVar.Instance.isGrinding)
+        {
+            collision.gameObject.SetActive(false);
+            gameManagerRef.GameOver();
+        }
+    }
 }

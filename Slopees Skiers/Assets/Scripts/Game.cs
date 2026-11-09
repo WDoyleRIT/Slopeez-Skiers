@@ -56,6 +56,8 @@ public class Game : MonoBehaviour
         // 2. Set the target frame rate to 60
         Application.targetFrameRate = 60;
 
+        GlobalVar.Instance.isGrinding = false;
+
         // Interval between spawning objects
         interval = 1f;
         objSpeed = 20f;

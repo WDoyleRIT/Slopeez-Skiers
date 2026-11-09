@@ -506,6 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedCharacter: 0
   selectedDifficulty: 0
+  volumeLevel: 1
 --- !u!4 &541206333
 Transform:
   m_ObjectHideFlags: 0
@@ -3903,7 +3904,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 9167b82c2d99bf840872a720c9827810, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1902690886
 GameObject:
   m_ObjectHideFlags: 0

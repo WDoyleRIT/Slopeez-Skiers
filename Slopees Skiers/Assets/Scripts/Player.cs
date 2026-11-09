@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using Unity.VisualScripting;
 using UnityEngine;
 
-enum PlayerState
+public enum PlayerState
 {
     Idle,
     Jumping,
@@ -14,10 +15,13 @@ enum PlayerState
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject playerCharacter;
-    private PlayerState currentState;
+    // Assigned to public to be read externally
+    public PlayerState currentState;
     private float jumpHeight = 5f;
     private float slopeLimit = 7f;
+    private float defaultElevation;
     private float startingElevation;
+    private float tubeElevation;
     private bool movingLeft;
     private bool movingRight;
     private Game gameManagerRef;
@@ -33,7 +37,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         currentState = PlayerState.Idle;
-        startingElevation = playerCharacter.transform.position.y;
+        defaultElevation = playerCharacter.transform.position.y;
+        startingElevation = defaultElevation;
+        tubeElevation = startingElevation + 1f;
         movingLeft = false;
         movingRight = false;
         gameManagerRef = FindObjectOfType<Game>();
@@ -72,6 +78,25 @@ public class Player : MonoBehaviour
         if (gameManagerRef.isPaused)
         {
             return;
+        }
+        Debug.Log(startingElevation);
+
+        // Adjust the player's elevation based on whether they are grinding or not
+        if (GlobalVar.Instance.isGrinding && currentState != PlayerState.Jumping)
+        {
+
+            startingElevation = tubeElevation;
+            currentState = PlayerState.Idle; // Reset the state to Idle when grinding
+            if (playerCharacter.transform.position.y != tubeElevation)
+            {
+                playerCharacter.transform.position = new Vector3(playerCharacter.transform.position.x,
+                 tubeElevation, playerCharacter.transform.position.z);
+            }
+        }
+        else
+        {
+            startingElevation = defaultElevation;
+            
         }
 
         //State machine for player movement! (right should be minus , left should be plus)
@@ -112,7 +137,9 @@ public class Player : MonoBehaviour
             movingLeft = false;
         }
 
-        if (movingLeft && playerCharacter.transform.position.x <= slopeLimit)
+        // Disabled left and right movement when grinding on a tube
+
+        if (movingLeft && playerCharacter.transform.position.x <= slopeLimit && !GlobalVar.Instance.isGrinding)
         {
             playerCharacter.transform.Translate(Vector3.right * Time.deltaTime * 30f);
         }
@@ -126,12 +153,11 @@ public class Player : MonoBehaviour
             movingRight = false;
         }
 
-        if (movingRight && playerCharacter.transform.position.x >= -slopeLimit)
+        if (movingRight && playerCharacter.transform.position.x >= -slopeLimit && !GlobalVar.Instance.isGrinding)
         {
             playerCharacter.transform.Translate(Vector3.left * Time.deltaTime * 30f);
         }
-
-
+         
 
         //Debug.Log("Current State: " + currentState);
     }

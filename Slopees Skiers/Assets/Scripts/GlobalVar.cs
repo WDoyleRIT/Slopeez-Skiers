@@ -27,6 +27,7 @@ public class GlobalVar : MonoBehaviour
     public Character selectedCharacter;
     public Difficulty selectedDifficulty;
     public float volumeLevel = 1.0f; // Default volume level (max)
+    public bool isGrinding = false; // Checks if player is currently on a tube
     private void Awake()
     {
         // Enforce the Singleton pattern to prevent duplicate managers
