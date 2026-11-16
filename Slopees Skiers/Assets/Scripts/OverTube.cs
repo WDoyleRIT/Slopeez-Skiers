@@ -42,7 +42,9 @@ public class OverTube : MonoBehaviour
         {
             
             // To Do: Make player snap to center of tube upon landing on one
-            collision.gameObject.transform.position = new Vector3(transform.position.x, collision.gameObject.transform.position.y, collision.gameObject.transform.position.z);
+            /*collision.gameObject.transform.position = new Vector3(transform.position.x, 
+                collision.gameObject.transform.position.y, collision.gameObject.transform.position.z);*/
+            // ABOVE IMPLEMENTATION NEEDS TESTING
 
             GlobalVar.Instance.isGrinding = false;
             Player playerScript = collision.gameObject.GetComponent<Player>();

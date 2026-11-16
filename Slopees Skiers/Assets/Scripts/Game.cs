@@ -124,13 +124,14 @@ public class Game : MonoBehaviour
                 break;
         }
 
+
+        // TO DO: Change spawn positions to be lower than the FOV
         Vector3 spawnPositionLog = new Vector3(randomX, -15.5f, 22.5f);
         Vector3 spawnPositionCoin = new Vector3(randomX, -14.5f, 22.5f);
         Vector3 spawnPositionTube = new Vector3(randomX, -15.5f, 22.5f);
 
-
-        //switch (Random.Range(1, 6))
-        switch (Random.Range(5, 6))
+        //switch (Random.Range(5, 6))
+        switch (Random.Range(1, 6))
         {
             // Case 1 and 2: spawn log
             case 1:

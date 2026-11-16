@@ -44,6 +44,7 @@ public class Coin : MonoBehaviour
             //Debug.Log("Kaching!");
             gameManagerRef.score += 20;
             gameManagerRef.CreatePointVisual(20);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.coinSFX);
             Destroy(this.gameObject);
         }
     }
